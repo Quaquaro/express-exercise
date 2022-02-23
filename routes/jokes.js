@@ -27,13 +27,18 @@ let jokes = [
  * Create a GET /joke route, that returns all jokes.
  */
 router.get("/", (req, res, next) => {
-  // …
+  res.json(jokes);
 });
 
 /**
  * Exercise 2
  * Create a GET /joke/:id route, that returns the joke for the given id.
  */
+console.log();
+router.get("/:id", (req, res) => {
+  const joke = jokes[req.params.id];
+  res.json(joke);
+});
 
 // …
 
@@ -42,13 +47,18 @@ router.get("/", (req, res, next) => {
  * Create a POST /joke route, that adds a new joke to the array.
  */
 
+router.post("/", (req, res) => {
+  const saveJoke = { id: nanoid(), joke: req.body.joke };
+  jokes.push(saveJoke);
+  res.json(saveJoke);
+});
 // …
 
 /**
  * Exercise 4
  * Create a PATCH /joke/:id route, that updates the joke for the given id.
  */
-
+router.patch("/:id", (res, req) => {});
 // …
 
 /**
